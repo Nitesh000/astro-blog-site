@@ -1,4 +1,7 @@
 ---
+import type {PostType} from "./types"
+const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
+const data = await res.json();
 ---
 
 <html lang="en">
@@ -10,6 +13,10 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+{
+    data.map((post: PostType) => (
+    <li>{post.title}</li>
+    ))
+    }
 	</body>
 </html>
